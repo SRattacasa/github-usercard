@@ -57,9 +57,6 @@ const followersArray = ['tetondan',
       
       const showIt = document.querySelector('.cards');
       showIt.appendChild(stepThree(response));
-      // const runIt = stepThree(response);
-      // stepThree(response);
-      // console.log('functoin with response =', runIt)
     })
     .then()
     .catch((error) => {
