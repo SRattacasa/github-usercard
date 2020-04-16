@@ -5,17 +5,19 @@
 
 
 // const axios = require('axios')
-const gitURL = "https://api.github.com/users/srattacasa";
+let gitUser = 'srattacasa'
+let gitURL = `https://api.github.com/users/${gitUser}`;
+
 
 axios.get(gitURL)
   .then((response) => {
-    console.log('result data is', response.data.login)
     const showIt = document.querySelector('.cards');
     showIt.appendChild(stepThree(response));
     // const runIt = stepThree(response);
     // stepThree(response);
     // console.log('functoin with response =', runIt)
   })
+  .then()
   .catch((error) => {
     console.log(error);
   });
@@ -41,7 +43,29 @@ axios.get(gitURL)
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell'];
+
+  followersArray.map(e => {
+    console.log(e);
+    let userURL = `https://api.github.com/users/${e}`;
+    axios.get(userURL)
+    .then((response) => {
+      
+      const showIt = document.querySelector('.cards');
+      showIt.appendChild(stepThree(response));
+      // const runIt = stepThree(response);
+      // stepThree(response);
+      // console.log('functoin with response =', runIt)
+    })
+    .then()
+    .catch((error) => {
+      console.log(error);
+    });
+  })
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
